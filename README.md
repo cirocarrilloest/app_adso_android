@@ -68,6 +68,8 @@ APP_ADSO_ANDROID
 - `src/components/EmployeeForm.js`: formulario reutilizable de crear y editar
 - `src/components/EmployeeItem.js`: tarjeta visual de cada empleado
 - `src/components/MessageBox.js`: mensajes simples de exito o error
+- `app.json`: Define como se presenta la app dentro del ecosistema Expo y Expo Go.
+- `babel.config.js`: Babel es la herramienta que transforma el codigo JavaScript moderno para que React Native y Expo puedan ejecutarlo correctamente.
 
 ## Como ejecutar
 
