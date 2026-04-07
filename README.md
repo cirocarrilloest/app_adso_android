@@ -42,6 +42,7 @@ Ejemplo:
 
 ## Estructura del proyecto
 
+```
 APP_ADSO_ANDROID
 ├──src/
 │ ├── components/
@@ -57,6 +58,7 @@ APP_ADSO_ANDROID
 ├─────App.js
 ├─────app.json
 └─────Babel.config.js
+```
 
 - `App.js`: configura la navegacion principal
 - `src/screens/EmployeeListScreen.js`: pantalla de lista de empleados
