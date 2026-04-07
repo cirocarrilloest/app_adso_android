@@ -80,7 +80,7 @@ npm install
 2. Iniciar Expo:
 
 ```bash
-npm start
+npx expo start --tunnel
 ```
 
 3. Abrir en un emulador Android o en Expo Go.
