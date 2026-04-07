@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "CRUD Empleados Expo",
+    "slug": "crud-empleados-expo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

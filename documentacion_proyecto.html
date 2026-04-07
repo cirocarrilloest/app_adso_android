@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentacion del proyecto CRUD de empleados</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --primary: #2563eb;
+      --accent: #10b981;
+      --border: #dbe4f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), #1d4ed8);
+      color: #ffffff;
+      padding: 48px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      margin: 0 auto;
+      max-width: 780px;
+      font-size: 1.05rem;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      color: #1d4ed8;
+    }
+
+    p, li {
+      color: var(--muted);
+    }
+
+    code {
+      background: #eff6ff;
+      color: #1e3a8a;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: Consolas, monospace;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      background: #fbfdff;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #dcfce7;
+      color: #166534;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      margin-bottom: 10px;
+    }
+
+    .flow {
+      padding-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 10px 20px 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Documentacion del proyecto CRUD de empleados</h1>
+    <p>
+      Esta app fue construida como una demo sencilla con React Native y Expo para que los estudiantes entiendan
+      como una aplicacion movil consume una API REST real y realiza operaciones CRUD.
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h2>1. Objetivo del proyecto</h2>
+      <p>
+        El proyecto muestra un ejemplo basico de una aplicacion movil que lista empleados, crea nuevos registros,
+        edita informacion existente y elimina empleados desde una API real.
+      </p>
+      <p>
+        La idea pedagogica es que el estudiante pueda seguir el flujo sin una arquitectura compleja, sin Redux,
+        sin TypeScript y sin autenticacion.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Tecnologias usadas</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="tag">Frontend movil</div>
+          <h3>React Native</h3>
+          <p>Se usa para construir la interfaz movil con componentes como <code>View</code>, <code>Text</code> y <code>FlatList</code>.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Entorno de desarrollo</div>
+          <h3>Expo SDK 54</h3>
+          <p>Permite ejecutar la app mas facilmente en Expo Go y simplifica el arranque del proyecto.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Navegacion</div>
+          <h3>React Navigation</h3>
+          <p>Se utiliza para moverse entre las pantallas de lista, crear y editar empleado.</p>
+        </div>
+        <div class="card">
+          <div class="tag">Consumo de API</div>
+          <h3>fetch</h3>
+          <p>La comunicacion HTTP se hace con <code>fetch</code> para mantener el codigo simple y facil de aprender.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. API que consume la app</h2>
+      <p>La aplicacion trabaja con la siguiente URL base:</p>
+      <p><code>https://nodejs-test-tfzg.onrender.com/api/empleados</code></p>
+      <p>Endpoints utilizados:</p>
+      <ul>
+        <li><code>GET /api/empleados</code>: consulta todos los empleados.</li>
+        <li><code>POST /api/empleados</code>: crea un nuevo empleado.</li>
+        <li><code>GET /api/empleados/:id</code>: consulta un empleado por identificador.</li>
+        <li><code>PUT /api/empleados/:id</code>: actualiza un empleado.</li>
+        <li><code>DELETE /api/empleados/:id</code>: elimina un empleado.</li>
+      </ul>
+      <p>Campos principales del empleado:</p>
+      <ul>
+        <li><code>_id</code></li>
+        <li><code>name</code></li>
+        <li><code>position</code></li>
+        <li><code>office</code></li>
+        <li><code>salary</code></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Estructura del proyecto</h2>
+      <div class="grid">
+        <div class="card">
+          <h3><code>App.js</code></h3>
+          <p>Configura la navegacion principal y registra las tres pantallas de la aplicacion.</p>
+        </div>
+        <div class="card">
+          <h3><code>src/services/api.js</code></h3>
+          <p>Centraliza la URL base y las funciones que hacen las peticiones HTTP a la API.</p>
+        </div>
+        <div class="card">
+          <h3><code>src/screens</code></h3>
+          <p>Contiene las pantallas principales: listar empleados, crear empleado y editar empleado.</p>
+        </div>
+        <div class="card">
+          <h3><code>src/components</code></h3>
+          <p>Incluye componentes reutilizables como el formulario, la tarjeta de empleado y los mensajes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>5. Pantallas del proyecto</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>EmployeeListScreen</h3>
+          <p>Muestra el listado de empleados en una <code>FlatList</code>, permite refrescar, editar y eliminar.</p>
+        </div>
+        <div class="card">
+          <h3>CreateEmployeeScreen</h3>
+          <p>Usa el formulario reutilizable para enviar un <code>POST</code> y crear un empleado nuevo.</p>
+        </div>
+        <div class="card">
+          <h3>EditEmployeeScreen</h3>
+          <p>Puede cargar el detalle del empleado con <code>GET by id</code> y luego actualizarlo con <code>PUT</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>6. Componentes reutilizables</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>EmployeeForm</h3>
+          <p>Se reutiliza tanto para crear como para editar. Maneja los campos <code>name</code>, <code>position</code>, <code>office</code> y <code>salary</code>.</p>
+        </div>
+        <div class="card">
+          <h3>EmployeeItem</h3>
+          <p>Representa cada empleado como una tarjeta visual con botones para editar y eliminar.</p>
+        </div>
+        <div class="card">
+          <h3>MessageBox</h3>
+          <p>Muestra mensajes sencillos de exito o error para que el usuario entienda lo que ocurrio.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>7. Flujo general de la app</h2>
+      <ol class="flow">
+        <li>La app inicia en la pantalla de lista de empleados.</li>
+        <li>La pantalla consulta la API con <code>GET /api/empleados</code>.</li>
+        <li>El usuario puede tocar el boton para agregar un nuevo empleado.</li>
+        <li>El formulario envia un <code>POST</code> para guardar el registro.</li>
+        <li>Si el usuario edita un registro, la app usa <code>GET /api/empleados/:id</code> si necesita cargar el detalle y luego envia un <code>PUT</code>.</li>
+        <li>Si el usuario elimina un empleado, la app envia un <code>DELETE</code> y actualiza la lista local.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>8. Puntos pedagogicos importantes</h2>
+      <ul>
+        <li>La logica de la API esta separada en un solo archivo para que sea mas facil de leer.</li>
+        <li>Las pantallas tienen una sola responsabilidad principal.</li>
+        <li>Los componentes se reutilizan para evitar codigo repetido.</li>
+        <li>Los nombres del proyecto coinciden con el dominio real de empleados.</li>
+        <li>La estructura es pequena y suficiente para explicar un CRUD real a estudiantes principiantes.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    Documento de apoyo para explicar el proyecto base CRUD de empleados con React Native, Expo y API REST.
+  </footer>
+</body>
+</html>

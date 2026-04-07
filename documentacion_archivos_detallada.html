@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentacion detallada por archivo - CRUD de empleados</title>
+  <style>
+    :root {
+      --bg: #eef4fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fbff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --primary: #1d4ed8;
+      --primary-soft: #dbeafe;
+      --accent: #10b981;
+      --border: #d8e3f0;
+      --code-bg: #eff6ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #f3f7fd 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    header {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      color: white;
+      padding: 42px 20px;
+    }
+
+    header .wrap,
+    main,
+    footer {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 860px;
+      font-size: 1.02rem;
+    }
+
+    main {
+      padding: 24px 20px 48px;
+    }
+
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    h3 {
+      margin-top: 0;
+      color: #1e3a8a;
+    }
+
+    p, li {
+      color: var(--muted);
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--primary);
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-weight: 600;
+    }
+
+    .file-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      background: var(--surface-soft);
+    }
+
+    .file-head {
+      background: var(--primary-soft);
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .file-head h3 {
+      margin-bottom: 6px;
+    }
+
+    .file-body {
+      padding: 18px;
+      background: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .mini {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      background: var(--surface-soft);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    code {
+      background: var(--code-bg);
+      color: #1e3a8a;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: Consolas, monospace;
+    }
+
+    .note {
+      border-left: 4px solid var(--accent);
+      background: #ecfdf5;
+      padding: 12px 14px;
+      border-radius: 10px;
+      color: #14532d;
+    }
+
+    .path {
+      font-family: Consolas, monospace;
+      font-size: 0.97rem;
+      color: #1e3a8a;
+      word-break: break-word;
+    }
+
+    footer {
+      padding: 0 20px 40px;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Documentacion detallada por archivo</h1>
+      <p>
+        Este documento explica cada archivo importante del proyecto CRUD de empleados con React Native y Expo.
+        La idea es que un estudiante pueda entender para que sirve cada archivo, que responsabilidad tiene y como se conecta con los demas.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>1. Alcance de esta documentacion</h2>
+      <p>
+        Esta documentacion cubre los archivos propios del proyecto. No se documenta la carpeta <code>node_modules</code>
+        porque contiene dependencias externas instaladas automaticamente. Tampoco se explica archivo por archivo el
+        contenido de <code>package-lock.json</code>, ya que es un archivo generado por npm para fijar versiones.
+      </p>
+      <div class="note">
+        Archivos funcionales documentados: <code>App.js</code>, <code>package.json</code>, <code>app.json</code>,
+        <code>babel.config.js</code>, <code>README.md</code> y todos los archivos dentro de <code>src</code>.
+      </div>
+      <div class="toc">
+        <a href="#app-js">App.js</a>
+        <a href="#package-json">package.json</a>
+        <a href="#package-lock">package-lock.json</a>
+        <a href="#app-json">app.json</a>
+        <a href="#babel-config">babel.config.js</a>
+        <a href="#readme">README.md</a>
+        <a href="#api-service">src/services/api.js</a>
+        <a href="#list-screen">src/screens/EmployeeListScreen.js</a>
+        <a href="#create-screen">src/screens/CreateEmployeeScreen.js</a>
+        <a href="#edit-screen">src/screens/EditEmployeeScreen.js</a>
+        <a href="#employee-form">src/components/EmployeeForm.js</a>
+        <a href="#employee-item">src/components/EmployeeItem.js</a>
+        <a href="#message-box">src/components/MessageBox.js</a>
+      </div>
+    </section>
+
+    <section id="app-js">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Entrada principal</div>
+          <h3>App.js</h3>
+          <div class="path">App.js</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Este es el punto de entrada visual de la aplicacion. Su responsabilidad principal es configurar la navegacion
+            entre pantallas y definir el estilo comun del encabezado.
+          </p>
+          <div class="grid">
+            <div class="mini">
+              <h4>Que importa</h4>
+              <p>Importa React, el contenedor de navegacion, el stack de React Navigation, el <code>StatusBar</code> y las tres pantallas principales.</p>
+            </div>
+            <div class="mini">
+              <h4>Que crea</h4>
+              <p>Crea una instancia de <code>createNativeStackNavigator()</code> para manejar la navegacion tipo pila.</p>
+            </div>
+            <div class="mini">
+              <h4>Que registra</h4>
+              <p>Registra tres rutas: <code>Lista</code>, <code>Crear</code> y <code>Editar</code>.</p>
+            </div>
+            <div class="mini">
+              <h4>Por que es importante</h4>
+              <p>Conecta toda la app. Sin este archivo, las pantallas existirian, pero no habria forma de navegar entre ellas.</p>
+            </div>
+          </div>
+          <p>
+            Tambien define un estilo comun para el encabezado: fondo azul, texto blanco y fondo claro en el contenido.
+            Esto hace que la aplicacion se vea coherente sin repetir estilos en cada pantalla.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="package-json">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Configuracion del proyecto</div>
+          <h3>package.json</h3>
+          <div class="path">package.json</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Este archivo describe el proyecto para npm. Aqui se define el nombre del proyecto, la version,
+            los scripts disponibles y las dependencias necesarias para ejecutar la app.
+          </p>
+          <div class="grid">
+            <div class="mini">
+              <h4>name</h4>
+              <p><code>app-adso-android</code> identifica el proyecto a nivel de npm.</p>
+            </div>
+            <div class="mini">
+              <h4>main</h4>
+              <p><code>node_modules/expo/AppEntry.js</code> indica el punto de arranque que Expo usa internamente.</p>
+            </div>
+            <div class="mini">
+              <h4>scripts</h4>
+              <p>Incluye comandos como <code>npm start</code>, <code>npm run android</code>, <code>npm run ios</code> y <code>npm run web</code>.</p>
+            </div>
+            <div class="mini">
+              <h4>dependencies</h4>
+              <p>Lista las librerias que la app necesita: Expo, React, React Native y React Navigation, entre otras.</p>
+            </div>
+          </div>
+          <p>
+            Este archivo es clave porque permite instalar el proyecto en otro equipo con <code>npm install</code> y define las versiones esperadas del entorno.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="package-lock">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Bloqueo de versiones</div>
+          <h3>package-lock.json</h3>
+          <div class="path">package-lock.json</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Este archivo es generado automaticamente por npm. Su funcion es guardar el arbol exacto de dependencias que se instalo en el proyecto.
+          </p>
+          <p>
+            Aunque normalmente no se edita manualmente, es importante porque ayuda a que varias personas del equipo instalen exactamente las mismas versiones,
+            reduciendo errores de "en mi maquina si funciona".
+          </p>
+          <p>
+            En una explicacion para estudiantes, se puede presentar como un archivo de apoyo tecnico: no contiene logica de negocio de la app,
+            pero si asegura estabilidad en las instalaciones.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="app-json">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Configuracion Expo</div>
+          <h3>app.json</h3>
+          <div class="path">app.json</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Este archivo contiene configuraciones basicas de Expo. Define como se presenta la app dentro del ecosistema Expo y Expo Go.
+          </p>
+          <div class="grid">
+            <div class="mini">
+              <h4>name</h4>
+              <p>Nombre visible de la aplicacion: <code>CRUD Empleados Expo</code>.</p>
+            </div>
+            <div class="mini">
+              <h4>slug</h4>
+              <p>Identificador amigable del proyecto dentro de Expo.</p>
+            </div>
+            <div class="mini">
+              <h4>version</h4>
+              <p>Version general de la app, util para seguimiento de cambios.</p>
+            </div>
+            <div class="mini">
+              <h4>orientation</h4>
+              <p>Se encuentra en <code>portrait</code>, lo que indica que la app esta pensada para usarse en vertical.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="babel-config">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Transpilacion</div>
+          <h3>babel.config.js</h3>
+          <div class="path">babel.config.js</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Babel es la herramienta que transforma el codigo JavaScript moderno para que React Native y Expo puedan ejecutarlo correctamente.
+          </p>
+          <p>
+            Este archivo activa la cache de Babel y usa el preset <code>babel-preset-expo</code>, que trae una configuracion preparada para proyectos Expo.
+          </p>
+          <p>
+            En este proyecto es intencionalmente pequeno para mantener la complejidad baja y dejar claro que no se necesita una configuracion avanzada.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="readme">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Guia inicial</div>
+          <h3>README.md</h3>
+          <div class="path">README.md</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Es la documentacion principal del repositorio. Sirve para que cualquier persona entienda rapidamente que hace el proyecto,
+            que API consume, que campos maneja y como ejecutarlo.
+          </p>
+          <p>
+            Su contenido actual esta orientado a estudiantes principiantes: explica la API, los endpoints, la estructura de carpetas,
+            los comandos de arranque y que aprendizajes se pueden obtener con la app.
+          </p>
+          <p>
+            Este archivo no participa en la ejecucion del programa, pero si es fundamental para el onboarding de estudiantes y docentes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="api-service">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Capa de datos</div>
+          <h3>src/services/api.js</h3>
+          <div class="path">src/services/api.js</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Este archivo centraliza toda la comunicacion con la API REST de empleados. Es uno de los archivos mas importantes
+            porque separa la logica de red de la logica visual.
+          </p>
+          <div class="grid">
+            <div class="mini">
+              <h4>BASE_URL</h4>
+              <p>Guarda la ruta base <code>https://nodejs-test-tfzg.onrender.com/api/empleados</code>. Si cambia la API, este es el primer lugar a revisar.</p>
+            </div>
+            <div class="mini">
+              <h4>request()</h4>
+              <p>Funcion reutilizable que ejecuta <code>fetch</code>, aplica cabeceras JSON, interpreta la respuesta y maneja errores.</p>
+            </div>
+            <div class="mini">
+              <h4>normalizeListResponse()</h4>
+              <p>Permite soportar respuestas en forma de arreglo directo o en forma de objeto con propiedad <code>data</code>.</p>
+            </div>
+            <div class="mini">
+              <h4>normalizeEmployeeResponse()</h4>
+              <p>Hace una normalizacion similar pero para respuestas de un solo empleado.</p>
+            </div>
+          </div>
+          <p>Funciones exportadas y su responsabilidad:</p>
+          <ul>
+            <li><code>getEmployees()</code>: obtiene la lista completa de empleados.</li>
+            <li><code>getEmployeeById(id)</code>: obtiene un empleado especifico por su identificador.</li>
+            <li><code>createEmployee(employee)</code>: envia un <code>POST</code> para crear un empleado.</li>
+            <li><code>updateEmployee(id, employee)</code>: envia un <code>PUT</code> para actualizar un empleado.</li>
+            <li><code>deleteEmployee(id)</code>: envia un <code>DELETE</code> para eliminar un empleado.</li>
+          </ul>
+          <p>
+            Pedagogicamente, este archivo enseña una idea clave: la interfaz visual no deberia construir URLs ni manejar detalles HTTP por todas partes.
+            Es mejor concentrar eso en un unico servicio.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="list-screen">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Pantalla principal</div>
+          <h3>src/screens/EmployeeListScreen.js</h3>
+          <div class="path">src/screens/EmployeeListScreen.js</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Esta pantalla muestra el listado de empleados. Es la primera vista que el usuario encuentra al abrir la app.
+          </p>
+          <div class="grid">
+            <div class="mini">
+              <h4>Estados usados</h4>
+              <p>Maneja <code>employees</code>, <code>loading</code>, <code>refreshing</code> y <code>message</code>.</p>
+            </div>
+            <div class="mini">
+              <h4>loadEmployees()</h4>
+              <p>Consulta la API usando <code>getEmployees()</code> y actualiza la lista local.</p>
+            </div>
+            <div class="mini">
+              <h4>useFocusEffect</h4>
+              <p>Hace que la lista se recargue cuando la pantalla vuelve a estar activa, por ejemplo despues de crear o editar.</p>
+            </div>
+            <div class="mini">
+              <h4>handleDelete()</h4>
+              <p>Elimina en la API y luego filtra el arreglo local para reflejar el cambio sin esperar otra consulta completa.</p>
+            </div>
+          </div>
+          <p>
+            En la interfaz usa estos elementos importantes:
+          </p>
+          <ul>
+            <li><code>MessageBox</code> para mostrar mensajes de exito o error.</li>
+            <li>Un boton <code>Pressable</code> para ir a la pantalla de crear.</li>
+            <li><code>FlatList</code> para renderizar cada empleado.</li>
+            <li><code>RefreshControl</code> para permitir refrescar con gesto de arrastre.</li>
+            <li><code>EmployeeItem</code> como componente de cada tarjeta del listado.</li>
+          </ul>
+          <p>
+            Esta pantalla es un gran ejemplo para estudiantes porque concentra varios conceptos comunes: carga inicial,
+            estados, consumo de API, renderizado de listas, navegacion y actualizacion visual despues de eliminar.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="create-screen">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Pantalla de creacion</div>
+          <h3>src/screens/CreateEmployeeScreen.js</h3>
+          <div class="path">src/screens/CreateEmployeeScreen.js</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Esta pantalla tiene una responsabilidad muy concreta: crear un empleado nuevo.
+          </p>
+          <p>
+            Su diseño es deliberadamente sencillo. No construye un formulario propio, sino que reutiliza <code>EmployeeForm</code>.
+            Eso ayuda a enseñar el principio de reutilizacion de componentes.
+          </p>
+          <p>
+            Cuando el usuario guarda, la funcion <code>handleCreate()</code> llama a <code>createEmployee()</code> del servicio API.
+            Si todo sale bien, navega de vuelta a la pantalla <code>Lista</code> y envia un mensaje de exito por parametros.
+          </p>
+          <p>
+            Es un buen ejemplo de una pantalla delgada: contiene poca logica porque delega el formulario al componente y la peticion HTTP al servicio.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="edit-screen">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Pantalla de edicion</div>
+          <h3>src/screens/EditEmployeeScreen.js</h3>
+          <div class="path">src/screens/EditEmployeeScreen.js</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Esta pantalla se encarga de editar un empleado existente. Es ligeramente mas compleja que la pantalla de crear,
+            porque puede necesitar cargar el detalle del empleado antes de mostrar el formulario.
+          </p>
+          <div class="grid">
+            <div class="mini">
+              <h4>Datos que recibe</h4>
+              <p>Recibe desde la navegacion <code>employeeId</code> y, en algunos casos, un objeto <code>employee</code> ya disponible.</p>
+            </div>
+            <div class="mini">
+              <h4>useEffect</h4>
+              <p>Si no llego un empleado completo desde la lista, consulta la API con <code>getEmployeeById()</code>.</p>
+            </div>
+            <div class="mini">
+              <h4>loading y error</h4>
+              <p>Muestra un indicador de carga o un mensaje de error antes de renderizar el formulario.</p>
+            </div>
+            <div class="mini">
+              <h4>handleUpdate()</h4>
+              <p>Envía los cambios con <code>updateEmployee()</code> y luego vuelve a la lista con un mensaje de confirmacion.</p>
+            </div>
+          </div>
+          <p>
+            El codigo usa la variable <code>isMounted</code> para evitar actualizar el estado cuando el componente ya no esta montado.
+            Esto ayuda a prevenir errores comunes en operaciones asincronas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="employee-form">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Componente reutilizable</div>
+          <h3>src/components/EmployeeForm.js</h3>
+          <div class="path">src/components/EmployeeForm.js</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Este componente representa el formulario de empleados. Se reutiliza tanto para crear como para editar,
+            por lo que es una pieza central del proyecto.
+          </p>
+          <p>Props que recibe:</p>
+          <ul>
+            <li><code>initialValues</code>: valores iniciales del formulario. En crear llegan vacios y en editar llegan con datos existentes.</li>
+            <li><code>buttonText</code>: texto del boton principal.</li>
+            <li><code>onSubmit</code>: funcion que se ejecuta al guardar.</li>
+          </ul>
+          <div class="grid">
+            <div class="mini">
+              <h4>Estados</h4>
+              <p>Guarda cada campo del formulario por separado: <code>name</code>, <code>position</code>, <code>office</code>, <code>salary</code>, ademas de <code>loading</code> y mensajes.</p>
+            </div>
+            <div class="mini">
+              <h4>Validaciones</h4>
+              <p>Valida que todos los campos esten diligenciados y que el salario sea numerico.</p>
+            </div>
+            <div class="mini">
+              <h4>handleSave()</h4>
+              <p>Construye el objeto final del empleado, convierte el salario a numero y llama a <code>onSubmit</code>.</p>
+            </div>
+            <div class="mini">
+              <h4>Retroalimentacion</h4>
+              <p>Usa <code>MessageBox</code> y <code>ActivityIndicator</code> para informar al usuario lo que esta pasando.</p>
+            </div>
+          </div>
+          <p>
+            Desde una mirada pedagogica, este archivo enseña formularios controlados, validacion sencilla,
+            conversion de tipos y reutilizacion de componentes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="employee-item">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Tarjeta de listado</div>
+          <h3>src/components/EmployeeItem.js</h3>
+          <div class="path">src/components/EmployeeItem.js</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Este componente representa un empleado dentro de la lista. Su trabajo es puramente visual e interactivo:
+            mostrar la informacion y ofrecer acciones de editar y eliminar.
+          </p>
+          <p>Props que recibe:</p>
+          <ul>
+            <li><code>employee</code>: objeto con los datos del empleado.</li>
+            <li><code>onEdit</code>: funcion que se ejecuta al pulsar el boton Editar.</li>
+            <li><code>onDelete</code>: funcion que se ejecuta al confirmar la eliminacion.</li>
+          </ul>
+          <p>
+            Antes de eliminar, usa <code>Alert.alert()</code> para pedir confirmacion. Esto es importante porque evita borrar por accidente.
+          </p>
+          <p>
+            Visualmente, muestra nombre, cargo, oficina y salario. Luego renderiza dos botones con colores distintos para dejar clara la accion:
+            azul para editar y rojo para eliminar.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="message-box">
+      <div class="file-card">
+        <div class="file-head">
+          <div class="tag">Mensajes reutilizables</div>
+          <h3>src/components/MessageBox.js</h3>
+          <div class="path">src/components/MessageBox.js</div>
+        </div>
+        <div class="file-body">
+          <p>
+            Este componente muestra mensajes simples de exito o error. Su logica es intencionalmente minima.
+          </p>
+          <div class="grid">
+            <div class="mini">
+              <h4>type</h4>
+              <p>Define si el mensaje es <code>success</code> o <code>error</code>.</p>
+            </div>
+            <div class="mini">
+              <h4>message</h4>
+              <p>Es el texto que se va a mostrar al usuario.</p>
+            </div>
+            <div class="mini">
+              <h4>Render condicional</h4>
+              <p>Si no hay mensaje, retorna <code>null</code> para no ocupar espacio innecesario.</p>
+            </div>
+            <div class="mini">
+              <h4>Estilos</h4>
+              <p>Usa fondo verde para exito y rojo claro para error, con colores de texto acordes.</p>
+            </div>
+          </div>
+          <p>
+            Aunque es pequeno, este archivo enseña una idea muy util: convertir un patron visual repetido en un componente reutilizable.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>9. Relacion entre archivos</h2>
+      <p>El flujo general del proyecto se puede entender asi:</p>
+      <ul>
+        <li><code>App.js</code> registra las pantallas y controla la navegacion.</li>
+        <li><code>EmployeeListScreen.js</code> muestra el listado inicial y usa <code>EmployeeItem</code> para cada registro.</li>
+        <li><code>CreateEmployeeScreen.js</code> y <code>EditEmployeeScreen.js</code> reutilizan <code>EmployeeForm</code>.</li>
+        <li><code>EmployeeForm.js</code> recoge datos del usuario y llama a una funcion que recibe por props.</li>
+        <li>Las pantallas llaman al servicio en <code>src/services/api.js</code> para hablar con la API real.</li>
+        <li><code>MessageBox.js</code> se usa para retroalimentar al usuario con mensajes de estado.</li>
+      </ul>
+      <div class="note">
+        Una buena manera de enseñarlo en clase es seguir esta ruta: <code>App.js</code> -> pantallas -> componentes -> servicio API.
+        Ese recorrido ayuda a los estudiantes a entender primero la interfaz y luego la comunicacion con el servidor.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Documento HTML generado para explicar detalladamente los archivos del proyecto CRUD de empleados con Expo SDK 54.
+  </footer>
+</body>
+</html>
